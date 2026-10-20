@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pape Ndiaye Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a repository index. Each project is a row: path label on the left, description, stack and repo link on the right. */
+:root {
+  --bg: #eef0f3;
+  --surface: #f8f9fb;
+  --fg: #0f1b2d;
+  --muted: #55627a;
+  --line: #cdd3de;
+  --accent: #1f4fd8;
+  --accent-fg: #ffffff;
+  --chip: #e1e6ef;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d131b; --surface: #131b26; --fg: #e7ebf2; --muted: #93a0b6;
+    --line: #26313f; --accent: #86a8ff; --accent-fg: #0d131b; --chip: #1b2533;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d131b; --surface: #131b26; --fg: #e7ebf2; --muted: #93a0b6;
+  --line: #26313f; --accent: #86a8ff; --accent-fg: #0d131b; --chip: #1b2533;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-inline: 20px;
+  padding-block: 40px 64px;
+}
+.wrap { max-width: 920px; margin-inline: auto; display: grid; gap: 56px; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+header { display: grid; gap: 18px; }
+.path { font-family: var(--font-mono); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+.path b { color: var(--accent); font-weight: 500; }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-wrap: balance;
+}
+.intro { max-width: 58ch; margin: 0; font-size: 1.125rem; color: var(--muted); }
+.intro strong { color: var(--fg); font-weight: 600; }
+
+.index-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+  padding-bottom: 12px; border-bottom: 2px solid var(--fg);
+}
+.projects { list-style: none; margin: 0; padding: 0; }
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 12px 40px;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.label { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.label h2 {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; line-height: 1.1;
+  letter-spacing: -0.02em; margin: 0; text-wrap: balance;
+}
+.label .repo { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; }
+.body { display: grid; gap: 16px; min-width: 0; align-content: start; }
+.body p { margin: 0; max-width: 62ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.chips li {
+  font-family: var(--font-mono); font-size: 12px; padding: 3px 9px; border-radius: 4px;
+  background: var(--chip); color: var(--fg);
+}
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  padding: 8px 14px; border-radius: 4px; text-decoration: none;
+  background: var(--accent); color: var(--accent-fg); border: 1px solid var(--accent);
+}
+a.btn:hover { filter: brightness(1.08); }
+.btn.pending {
+  background: transparent; color: var(--muted); border: 1px dashed var(--line); cursor: default;
+}
+
+footer { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 680px) {
+  .project { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  body { padding-block: 28px 48px; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="path"><b>~</b>/pape-ndiaye/projects</div>
+    <h1>Pape Ndiaye</h1>
+    <p class="intro">Computer science student at the <strong>University of Rhode Island</strong>, building AI-native software: multi-agent systems, security tooling, and apps that help people make everyday decisions.</p>
+  </header>
+
+  <main>
+    <div class="index-head"><span>Projects</span><span>6 repositories</span></div>
+    <ul class="projects">
+
+      <li class="project">
+        <div class="label">
+          <h2>MYCEL</h2>
+          <span class="repo">multi-agent system</span>
+        </div>
+        <div class="body">
+          <p>A multi-agent AI system built to explore how autonomous agents can persist what they learn, change code safely, and stay inside clear rules. It stores state in SQLite, uses embedding models for retrieval, rewrites Python through its AST, runs agent code in subprocess sandboxes, and applies governance patterns to control what agents may do.</p>
+          <ul class="chips"><li>Python</li><li>SQLite</li><li>Embeddings</li><li>AST</li><li>Sandboxing</li></ul>
+          <div class="links"><span class="btn pending">Repository link to add</span></div>
+        </div>
+      </li>
+
+      <li class="project">
+        <div class="label">
+          <h2>Foreworth</h2>
+          <span class="repo">formerly Spend Sense</span>
+        </div>
+        <div class="body">
+          <p>A fintech app for Gen Z, started at a URI hackathon, that answers "Can I afford this?" before a purchase. It tracks buy now, pay later payments and pairs them with a retirement and future-value estimator, so a small purchase today shows what it could cost later. Claude generates the plain-language explanation.</p>
+          <ul class="chips"><li>React</li><li>Node</li><li>Express</li><li>Firebase</li><li>Claude API</li></ul>
+          <div class="links"><span class="btn pending">Repository link to add</span></div>
+        </div>
+      </li>
+
+      <li class="project">
+        <div class="label">
+          <h2>AI Intrusion Detection System</h2>
+          <span class="repo">network security</span>
+        </div>
+        <div class="body">
+          <p>A machine-learning intrusion detection system with a seven-layer architecture, from data ingestion through the ML pipeline to alerting. It is designed around the CICIDS-2017 dataset of labeled network traffic.</p>
+          <ul class="chips"><li>Python</li><li>Machine learning</li><li>CICIDS-2017</li></ul>
+          <div class="links"><span class="btn pending">Repository link to add</span></div>
+        </div>
+      </li>
+
+      <li class="project">
+        <div class="label">
+          <h2>URI Course Planner</h2>
+          <span class="repo">student tools</span>
+        </div>
+        <div class="body">
+          <p>An app that helps URI students plan their semesters and map out the courses they need to graduate, built around the way students actually pick classes.</p>
+          <ul class="chips"><li>Web app</li><li>AI-assisted build</li></ul>
+          <div class="links"><span class="btn pending">Repository link to add</span></div>
+        </div>
+      </li>
+
+      <li class="project">
+        <div class="label">
+          <h2>Campus Textbook Exchange</h2>
+          <span class="repo">student marketplace</span>
+        </div>
+        <div class="body">
+          <p>A marketplace where students buy, sell, and swap textbooks with each other on campus, so nobody pays full price for a book someone down the hall is done with.</p>
+          <ul class="chips"><li>Web app</li><li>AI-assisted build</li></ul>
+          <div class="links"><span class="btn pending">Repository link to add</span></div>
+        </div>
+      </li>
+
+      <li class="project">
+        <div class="label">
+          <h2>Running App</h2>
+          <span class="repo">fitness tracking UI</span>
+        </div>
+        <div class="body">
+          <p>A running app with three core screens: a home dashboard, live run tracking, and a post-run summary. Built in React as an interface study for tracking a run from start to finish.</p>
+          <ul class="chips"><li>React</li><li>UI design</li></ul>
+          <div class="links"><span class="btn pending">Repository link to add</span></div>
+        </div>
+      </li>
+
+    </ul>
+  </main>
+
+  <footer>
+    <span>Pape Ndiaye · University of Rhode Island</span>
+    <span>Class of 2028</span>
+  </footer>
+</div>
